@@ -29,11 +29,12 @@ Type `help` to bring up the command list and `quit` to exit when you're done.
 ## Step 2: Installing the Datadog OpenVPN check
 
 1. Edit `openvpn.yaml` and configure to your liking (the default options are sufficient, apart from the tags)
-1. Move `openvpn.yaml` to `/etc/dd-agent/conf.d/openvpn.yaml`
-1. Move `openvpn.py` to `/etc/dd-agent/checks.d/openvpn.py`
+1. Move `openvpn.yaml` to `/etc/datadog-agent/conf.d/openvpn.yaml`
+1. Move `openvpn.py` to `/etc/datadog-agent/checks.d/openvpn.py`
 1. Restart the Datadog agent
 
-    /etc/init.d/datadog-agent restart
+    systemctl restart datadog-agent
+    datadog-agent status
 
 ## Limitations
 
