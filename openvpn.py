@@ -55,12 +55,12 @@ class OpenVPNCheck(AgentCheck):
 
     except socket.timeout:
       self.log.error("Timed out trying to connect to OpenVPN: %s" % (e))
-      self.gauge('openvpn.test', -1, tags=tags)
+      self.gauge('openvpn.timeout', -1, tags=tags)
       return
 
     except socket.error as e:
       self.log.error("Exception while trying to connect to OpenVPN: %s" % (e))
-      self.gauge('openvpn.test', -2, tags=tags)
+      self.gauge('openvpn.error', -2, tags=tags)
       return
 
 if __name__ == '__main__':
