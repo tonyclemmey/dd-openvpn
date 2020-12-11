@@ -33,25 +33,25 @@ class OpenVPNCheck(AgentCheck):
 
       data = s.makefile('rb')
       line = data.readline()
-      if not line.startswith('>INFO:OpenVPN'):
+      if not line.startswith(b'>INFO:OpenVPN'):
         self.log.error("Unexpected OpenVPN output: %s" %s (line.rstrip()))
         s.close()
         return
 
       # Request load statistics (in order: number of connected users, bytes in, bytes out)
-      s.send('load-stats\r\n')
+      s.send(b'load-stats\r\n')
 
       # Strip trailing whitespaces and "SUCCESS: " prefix
-      line = data.readline().rstrip().lstrip('SUCCESS: ')
+      line = data.readline().rstrip().lstrip(b'SUCCESS: ')
 
       # Done with socket for now
       s.close()
 
       # Metrics separated by commas; metric name and value separated by =
-      ovpn_metrics = line.split(',')
+      ovpn_metrics = line.split(b',')
       for item in ovpn_metrics:
-        metric = item.split('=')
-        self.gauge('openvpn.' + metric[0], metric[1], tags=tags)
+        metric = item.split(b'=')
+        self.gauge('openvpn.' + metric[0].decode(), metric[1].decode(), tags=tags)
 
     except socket.timeout:
       self.log.error("Timed out trying to connect to OpenVPN: %s" % (e))
