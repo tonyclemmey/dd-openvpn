@@ -21,7 +21,7 @@ class OpenVPNCheck(AgentCheck):
     # Prepare a socket
     try:
       ipaddress = socket.gethostbyname(domain)
-    except socket.error, e:
+    except socket.error as e:
       self.log.error("Unable to get IP for %s: %s" % (domain, e))
       return
 
@@ -58,7 +58,7 @@ class OpenVPNCheck(AgentCheck):
       self.gauge('openvpn.test', -1, tags=tags)
       return
 
-    except socket.error, e:
+    except socket.error as e:
       self.log.error("Exception while trying to connect to OpenVPN: %s" % (e))
       self.gauge('openvpn.test', -2, tags=tags)
       return
