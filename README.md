@@ -1,4 +1,4 @@
-# OpenVPN check for Datadog
+# OpenVPN check for Datadog (CentOS 8)
 ## Overview
 
 TL;DR: a check to send bandwidth usage and the count of active connections to Datadog.
