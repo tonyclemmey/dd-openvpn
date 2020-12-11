@@ -13,7 +13,7 @@ Once parsed, we can send the results to Datadog to build graphs and alert anytim
 
 ## Step 1: Enabling the OpenVPN Management Interface
 
-Open up `/etc/openvpn/openvpn.conf` and add the following line:
+Open up `/etc/openvpn/server/server.conf` and add the following line:
 
     management localhost 7505
 
