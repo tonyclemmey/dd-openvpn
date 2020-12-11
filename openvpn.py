@@ -64,6 +64,6 @@ class OpenVPNCheck(AgentCheck):
       return
 
 if __name__ == '__main__':
-  check, instances = OpenVPNCheck.from_yaml('/etc/dd-agent/conf.d/openvpn.yaml')
+  check, instances = OpenVPNCheck.from_yaml('/etc/datadog-agent/conf.d/openvpn.yaml')
   for instance in instances:
     check.check(instance)
